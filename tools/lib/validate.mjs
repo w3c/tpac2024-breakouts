@@ -143,7 +143,7 @@ ${projectErrors.map(error => '- ' + error).join('\n')}`);
         try {
           const sdesc = parseSessionBody(s.body);
           const sAuthorExcluded = sdesc.chairs
-            .find(c => c.name?.toLowerCase() === 'author--');
+            .find(c => c.name?.toLowerCase() === 'author-');
           if (!sAuthorExcluded && session.chairs.find(c => c.login === s.author.login)) {
             return true;
           }

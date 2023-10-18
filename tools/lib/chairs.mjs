@@ -25,7 +25,7 @@ export async function fetchSessionChairs(session, chairs2W3CID) {
   const chairs = [];
   if (session.author) {
     if (!session.description.chairs ||
-        !session.description.chairs.find(c => c.name?.toLowerCase() === 'author--')) {
+        !session.description.chairs.find(c => c.name?.toLowerCase() === 'author-')) {
       const w3cAccount = await fetchW3CAccount(session.author.databaseId);
       const chair = {
         databaseId: session.author.databaseId,
@@ -46,7 +46,7 @@ export async function fetchSessionChairs(session, chairs2W3CID) {
   }
   if (session.description.chairs) {
     for (const chairDesc of session.description.chairs) {
-      if (chairDesc.name?.toLowerCase() === 'author--') {
+      if (chairDesc.name?.toLowerCase() === 'author-') {
         continue;
       }
       let chair = Object.assign({}, chairDesc);
