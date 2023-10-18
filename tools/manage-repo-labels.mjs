@@ -26,7 +26,7 @@ const labels = [
 
 async function createRepoLabels(owner, repo) {
   console.log('Retrieve repository information...');
-  const res = await sendGraphQLRequest(`query {
+  const query = `query {
     repository(owner: "${owner}", name: "${repo}") {
       id
       labels(first: 100) {
@@ -38,7 +38,9 @@ async function createRepoLabels(owner, repo) {
         }
       }
     }
-  }`);
+  }`;
+  const res = await sendGraphQLRequest(query);
+  console.log(JSON.stringify(res, null, 2));
   const repositoryId = res.data.repository.id;
   const repositoryLabels = res.data.repository.labels.nodes
     .sort((l1, l2) => l1.name.localeCompare(l2.name));
