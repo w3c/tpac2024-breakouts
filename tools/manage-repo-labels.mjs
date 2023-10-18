@@ -39,6 +39,7 @@ async function createRepoLabels(owner, repo) {
       }
     }
   }`;
+  console.log(query);
   const res = await sendGraphQLRequest(query);
   console.log(JSON.stringify(res, null, 2));
   const repositoryId = res.data.repository.id;
@@ -149,6 +150,8 @@ const owner = process.argv[2].includes('/') ?
 const repo =
   process.argv[3] ??
   process.argv[2].split('/')[1];
+console.log(`- owner: ${owner}`);
+console.log(`- repo: ${repo}`);
 
 createRepoLabels(owner, repo)
   .catch(err => {
