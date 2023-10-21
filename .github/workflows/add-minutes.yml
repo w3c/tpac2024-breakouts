@@ -28,7 +28,7 @@ jobs:
         run: npm ci
 
       - name: Link to session minutes
-        run: node tools/add-minutes.mjs ${{ inputs.sessionNumber }}
+        run: npx add-minutes ${{ inputs.sessionNumber }}
         env:
           # URL of the annual TPAC XXXX breakout project.
           # The PROJECT_OWNER and PROJECT_NUMBER variables must be defined on

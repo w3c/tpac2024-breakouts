@@ -1,10 +1,5 @@
 {
-  "name": "tpac-breakouts",
-  "devDependencies": {
-    "irc": "^0.5.2",
-    "puppeteer": "^20.5.0",
-    "seedrandom": "^3.0.5",
-    "webvtt-parser": "^2.2.0",
-    "yaml": "^2.3.1"
+  "dependencies": {
+    "tpac-breakouts": "w3c/tpac-breakouts"
   }
 }

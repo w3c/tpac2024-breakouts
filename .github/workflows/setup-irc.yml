@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: Run the setup script
-        run: node tools/setup-irc.mjs ${{ inputs.sessionNumber }} full ${{ inputs.dismiss }}
+        run: npx setup-irc ${{ inputs.sessionNumber }} full ${{ inputs.dismiss }}
         env:
           # URL of the annual TPAC XXXX breakout project.
           # The PROJECT_OWNER and PROJECT_NUMBER variables must be defined on

@@ -58,7 +58,7 @@ jobs:
         shell: bash
 
       - name: Validate session and update issue labels accordingly
-        run: node tools/validate-session.mjs ${{ github.event.issue.number }} changes.json
+        run: npx validate-session ${{ github.event.issue.number }} changes.json
         env:
           # See above for PROJECT_XX variables
           PROJECT_OWNER: ${{ vars.PROJECT_OWNER_TYPE || 'organization' }}/${{ vars.PROJECT_OWNER || 'w3c' }}

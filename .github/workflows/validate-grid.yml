@@ -31,7 +31,7 @@ jobs:
         run: npm ci
 
       - name: Validate grid and update issue labels accordingly
-        run: node tools/validate-grid.mjs ${{ inputs.validation }}
+        run: npx validate-grid ${{ inputs.validation }}
         env:
           # URL of the annual TPAC XXXX breakout project.
           # The PROJECT_OWNER and PROJECT_NUMBER variables must be defined on
