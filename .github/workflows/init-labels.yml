@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Run the init labels script
-        run: npx manage-repo-labels ${{ github.repository }}
+        run: npx init-repo-labels ${{ github.repository }}
         env:
           # A valid Personal Access Token (classic version) with project
           # and public_repo scope.
