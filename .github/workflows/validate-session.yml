@@ -53,6 +53,15 @@ jobs:
           # API under the hoods.
           github-token: ${{ secrets.GRAPHQL_TOKEN }}
 
+      - name: Add thank you comment with links to documentation
+        if: ${{ github.event.action == 'opened' }}
+        run: gh issue comment "$NUMBER" --body-file "$BODY_FILE"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          NUMBER: ${{ github.event.issue.number }}
+          BODY_FILE: .github/session-created.md
+
       - name: Dump changes to local file
         run: echo '${{ toJSON(github.event.issue.changes || '{}') }}' > changes.json
         shell: bash
