@@ -1,4 +1,4 @@
-name: Validate breakout session issue
+name: Validate breakout session issue and update calendar
 
 on:
   issues:
@@ -72,3 +72,28 @@ jobs:
           # in a variable. Structure is a JSON object with identities as keys.
           CHAIR_W3CID: ${{ vars.CHAIR_W3CID }}
 
+      - name: Create/Update calendar entry
+        run: npx update-calendar ${{ inputs.sessionNumber }} quiet
+        env:
+          # See above for PROJECT_XX variables
+          PROJECT_OWNER: ${{ vars.PROJECT_OWNER_TYPE || 'organization' }}/${{ vars.PROJECT_OWNER || 'w3c' }}
+          PROJECT_NUMBER: ${{ vars.PROJECT_NUMBER }}
+
+          # Same valid Personal Access Token (classic version) as above, with
+          # project and public_repo scope.
+          GRAPHQL_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+
+          # Information about the team user on behalf of which the updates to
+          # the calendar will be made. The password must obviously be stored
+          # as a secret!
+          W3C_LOGIN: ${{ vars.W3C_LOGIN }}
+          W3C_PASSWORD: ${{ secrets.W3C_PASSWORD }}
+
+          # Mapping between rooms and Zoom meetings must be stored in a variable
+          # (so that it does not get published). Structure is a JSON object
+          # with room names as keys.
+          ROOM_ZOOM: ${{ vars.ROOM_ZOOM }}
+
+          # Mapping between chair GitHub identities and W3C IDs must be stored
+          # in a variable. Structure is a JSON object with identities as keys.
+          CHAIR_W3CID: ${{ vars.CHAIR_W3CID }}
