@@ -18,8 +18,10 @@ jobs:
         with:
           ref: main
 
+      # Note: no "package-lock.json" and no "npm ci" on purpose to retrieve
+      # latest version of w3c/tpac-breakouts tools (which are unversioned)
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Run the init labels script
         run: npx init-repo-labels ${{ github.repository }}
