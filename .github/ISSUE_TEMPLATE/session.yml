@@ -38,15 +38,6 @@ body:
     validations:
       required: false
 
-  - type: input
-    id: shortname
-    attributes:
-      label: IRC channel (Optional)
-      description: |
-        Shortname for the irc.w3.org channel (e.g., `#my-fav-session`). If not provided, shortname will be generated from title.
-    validations:
-      required: false
-
   - type: dropdown
     id: attendance
     attributes:
@@ -58,6 +49,26 @@ body:
         - Restricted to TPAC registrants
     validations:
       required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Logistics
+
+  - type: markdown
+    attributes:
+      value: |
+        > [!Note]
+	The meeting planners will provide additional logistics information automatically, including calendar information.
+
+  - type: input
+    id: shortname
+    attributes:
+      label: IRC channel (Optional)
+      description: |
+        Shortname for the irc.w3.org channel (e.g., `#my-fav-session`). If not provided, shortname will be generated from title.
+    validations:
+      required: false
 
   - type: markdown
     attributes:
@@ -93,3 +104,9 @@ body:
       label: Agenda for the meeting.
       description: |
         This part may be completed closer to the meeting. As the agenda becomes available, you will be able to update your session description in markdown to **detail the agenda or link to an external agenda**.
+
+  - type: markdown
+    attributes:
+      value: |
+        > [!Note]
+	After the meeting, the meeting planners will add a section to the session description for meeting materials such as links to minutes, presentations, and any recordings.
