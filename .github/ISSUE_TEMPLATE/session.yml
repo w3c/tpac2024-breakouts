@@ -59,7 +59,7 @@ body:
     attributes:
       value: |
         > [!Note]
-	The meeting planners will provide additional logistics information automatically, including calendar information.
+        The meeting planners will provide additional logistics information automatically, including calendar information.
 
   - type: input
     id: shortname
@@ -109,4 +109,4 @@ body:
     attributes:
       value: |
         > [!Note]
-	After the meeting, the meeting planners will add a section to the session description for meeting materials such as links to minutes, presentations, and any recordings.
+        After the meeting, the meeting planners will add a section to the session description for meeting materials such as links to minutes, presentations, and any recordings.
