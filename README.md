@@ -1,5 +1,5 @@
 # TPAC 2024 - Breakout sessions
-This repo is for the W3C community to propose and organize breakout sessions for [TPAC 2024](@@addlink). Sessions will take place on Wednesday, 25 September 2024; detailed schedule will be based on the proposals received and published on the [TPAC schedule](@@addlink) a couple of days before that.
+This repo is for the W3C community to propose and organize breakout sessions for [TPAC 2024](https://www.w3.org/2024/09/TPAC/). Sessions will take place on Wednesday, 25 September 2024; detailed schedule will be based on the proposals received and published on the [TPAC schedule](https://www.w3.org/2024/09/TPAC/breakouts.html) a couple of days before that.
 
 * [List of proposed sessions](../../issues). We welcome expressions of support (through emojis), questions, and other comments.
 * [Propose a new session](https://github.com/w3c/tpac2024-breakouts/issues/new?assignees=&labels=session&projects=&template=session.yml) (for those who have registered for TPAC or plan to).
