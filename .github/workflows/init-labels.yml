@@ -1,4 +1,4 @@
-name: [M] Initialize labels
+name: "[M] Initialize labels"
 
 on:
   workflow_dispatch:

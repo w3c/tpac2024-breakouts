@@ -1,4 +1,4 @@
-name: [M] Link to session minutes
+name: "[M] Link to session minutes"
 
 on:
   workflow_dispatch:
