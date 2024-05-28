@@ -89,7 +89,7 @@ body:
     attributes:
       label: Instructions for meeting planners (Optional)
       description: |
-        Any information for the meeting planners, including timing constraints. This information will not be exported to the TPAC site or calendar.
+        Any information for the meeting planners, including timing constraints or groups not yet registered where overlap should be avoided. This information will not be exported to the TPAC site or calendar.
     validations:
       required: false
 
@@ -103,7 +103,7 @@ body:
     attributes:
       label: Agenda for the meeting.
       description: |
-        This part may be completed closer to the meeting. As the agenda becomes available, you will be able to update your session description in markdown to **detail the agenda or link to an external agenda**.
+        This part may be completed closer to the meeting. As the agenda becomes available, you will be able to update your session description in markdown to **detail the agenda or link to an external agenda**. Agenda information will be pushed to the calendar.
 
   - type: markdown
     attributes:
