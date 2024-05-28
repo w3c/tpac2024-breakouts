@@ -7,6 +7,6 @@ This repo is for the W3C community to propose and organize breakout sessions for
 <!-- * [Grid of breakout sessions](@@/breakouts.html#grid).-->
 * [Time slot schedule](https://github.com/w3c/tpac2024-breakouts/wiki/Breakout%E2%80%90time%E2%80%90slots).
 * [Good Practices for Session Chairs](https://github.com/w3c/tpac-breakouts/wiki/Good-Practices-for-Session-Chairs), including instructions for proposing a breakout session, training for your session, and tips for running your session.
-<!--    * In case you are making slides, consider using the [TPAC 2024 slide template in HTML](https://www.w3.org/2024/Talks/TPAC/Templates/).-->
+* In case you are making slides, consider using the [TPAC 2024 slide template in HTML](https://www.w3.org/2024/Talks/TPAC/Templates/).
 * [Breakout policies](https://github.com/w3c/tpac-breakouts/wiki/Policies) regarding session scope, participation, and how the meeting planners optimize scheduling and room assignments.
 
