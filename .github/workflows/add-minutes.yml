@@ -1,4 +1,4 @@
-name: Link to session minutes
+name: [M] Link to session minutes
 
 on:
   workflow_dispatch:
@@ -15,12 +15,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Checkout latest version of release script
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main
 

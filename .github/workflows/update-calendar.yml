@@ -1,4 +1,4 @@
-name: Update TPAC calendar based on sessions info
+name: "[M] Update W3C calendar"
 
 on:
   workflow_dispatch:
@@ -20,26 +20,24 @@ on:
 
 jobs:
   update-calendar:
-    name: Update TPAC calendar
+    name: Update W3C calendar
     runs-on: ubuntu-latest
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Checkout latest version of release script
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main
 
-      # Note: no "package-lock.json" and no "npm ci" on purpose to retrieve
-      # latest version of w3c/tpac-breakouts tools (which are unversioned)
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Convert session issues to calendar entries.
-        run: npx update-calendar ${{ inputs.sessionNumber }} ${{ inputs.calendarstatus }}
+        run: npx tpac-breakouts sync-calendar ${{ inputs.sessionNumber }} --status ${{ inputs.calendarstatus }}
         env:
           # URL of the annual TPAC XXXX breakout project.
           # The PROJECT_OWNER and PROJECT_NUMBER variables must be defined on
@@ -52,6 +50,7 @@ jobs:
           # A valid Personal Access Token (classic version) with project
           # and public_repo scope.
           GRAPHQL_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
 
           # Information about the team user on behalf of which the updates to
           # the calendar will be made. The password must obviously be stored
@@ -66,5 +65,5 @@ jobs:
 
           # Mapping between chair GitHub identities and W3C IDs must be stored
           # in a variable. Structure is a JSON object with identities as keys.
-          CHAIR_W3CID: ${{ vars.CHAIR_W3CID }}
+          W3CID_MAP: ${{ vars.W3CID_MAP }}
 

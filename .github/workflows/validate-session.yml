@@ -1,4 +1,4 @@
-name: Validate breakout session issue and update calendar
+name: "[A] Validate session and update W3C calendar"
 
 on:
   issues:
@@ -14,25 +14,23 @@ on:
 
 jobs:
   validate-session:
-    name: Validate breakout session
+    name: Validate session and update W3C calendar
     runs-on: ubuntu-latest
     # We're only interested in "session" issues
     if: ${{ contains(github.event.issue.labels.*.name, 'session') }}
     steps:
       - name: Setup node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
       - name: Checkout latest version of release script
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: main
 
-      # Note: no "package-lock.json" and no "npm ci" on purpose to retrieve
-      # latest version of w3c/tpac-breakouts tools (which are unversioned)
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Add issue to TPAC breakout session project
         if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
@@ -56,10 +54,10 @@ jobs:
           github-token: ${{ secrets.GRAPHQL_TOKEN }}
 
       - name: Add thank you comment with links to documentation
-        if: ${{ github.event.action == 'opened' }}
+        if: ${{ false && github.event.action == 'opened' }}
         run: gh issue comment "$NUMBER" --body-file "$BODY_FILE"
         env:
-          GITHUB_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
           GH_REPO: ${{ github.repository }}
           NUMBER: ${{ github.event.issue.number }}
           BODY_FILE: .github/session-created.md
@@ -69,7 +67,7 @@ jobs:
         shell: bash
 
       - name: Validate session and update issue labels accordingly
-        run: npx validate-session ${{ github.event.issue.number }} changes.json
+        run: npx tpac-breakouts validate ${{ github.event.issue.number }} --changes changes.json --what everything
         env:
           # See above for PROJECT_XX variables
           PROJECT_OWNER: ${{ vars.PROJECT_OWNER_TYPE || 'organization' }}/${{ vars.PROJECT_OWNER || 'w3c' }}
@@ -81,10 +79,10 @@ jobs:
 
           # Mapping between chair GitHub identities and W3C IDs must be stored
           # in a variable. Structure is a JSON object with identities as keys.
-          CHAIR_W3CID: ${{ vars.CHAIR_W3CID }}
+          W3CID_MAP: ${{ vars.W3CID_MAP }}
 
       - name: Create/Update calendar entry
-        run: npx update-calendar ${{ github.event.issue.number }} quiet
+        run: npx tpac-breakouts sync-calendar ${{ github.event.issue.number }} --quiet
         env:
           # See above for PROJECT_XX variables
           PROJECT_OWNER: ${{ vars.PROJECT_OWNER_TYPE || 'organization' }}/${{ vars.PROJECT_OWNER || 'w3c' }}
@@ -107,4 +105,4 @@ jobs:
 
           # Mapping between chair GitHub identities and W3C IDs must be stored
           # in a variable. Structure is a JSON object with identities as keys.
-          CHAIR_W3CID: ${{ vars.CHAIR_W3CID }}
+          W3CID_MAP: ${{ vars.W3CID_MAP }}
