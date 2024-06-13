@@ -89,7 +89,7 @@ body:
     attributes:
       label: Instructions for meeting planners (Optional)
       description: |
-        Any information for the meeting planners, including timing constraints or groups not yet registered where overlap should be avoided. This information will not be exported to the TPAC site or calendar.
+        Any information for the meeting planners, including [timing constraints](https://github.com/w3c/tpac2024-breakouts/wiki/Breakout%E2%80%90time%E2%80%90slots) or groups not yet registered where overlap should be avoided. This information will not be exported to the TPAC site or calendar.
     validations:
       required: false
 
