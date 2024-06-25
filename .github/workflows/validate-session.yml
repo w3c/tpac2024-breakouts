@@ -54,7 +54,7 @@ jobs:
           github-token: ${{ secrets.GRAPHQL_TOKEN }}
 
       - name: Add thank you comment with links to documentation
-        if: ${{ false && github.event.action == 'opened' }}
+        if: ${{ github.event.action == 'opened' }}
         run: gh issue comment "$NUMBER" --body-file "$BODY_FILE"
         env:
           GH_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
@@ -76,6 +76,7 @@ jobs:
           # Same valid Personal Access Token (classic version) as above, with
           # project and public_repo scope.
           GRAPHQL_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
 
           # Mapping between chair GitHub identities and W3C IDs must be stored
           # in a variable. Structure is a JSON object with identities as keys.
@@ -91,6 +92,7 @@ jobs:
           # Same valid Personal Access Token (classic version) as above, with
           # project and public_repo scope.
           GRAPHQL_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
+          GH_TOKEN: ${{ secrets.GRAPHQL_TOKEN }}
 
           # Information about the team user on behalf of which the updates to
           # the calendar will be made. The password must obviously be stored
