@@ -17,7 +17,9 @@ jobs:
     name: Validate session and update W3C calendar
     runs-on: ubuntu-latest
     # We're only interested in "session" issues
-    if: ${{ contains(github.event.issue.labels.*.name, 'session') }}
+    # and don't want to react to edits made by the bot as a consequence of
+    # a previous run of this job
+    if: ${{ !endsWith(github.actor, '-bot') && contains(github.event.issue.labels.*.name, 'session') }}
     steps:
       - name: Setup node.js
         uses: actions/setup-node@v4
